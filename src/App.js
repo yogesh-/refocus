@@ -1,35 +1,23 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
-import { GetWindowDims } from "./getDims";
+import { GetWindowDims } from "./utilities/getDims";
+import { Time } from "./utilities/time";
 
 function App() {
   const [finalUrl, setImgUrl] = useState();
   const [time, setTime] = useState(new Date().toLocaleString());
   const window = GetWindowDims();
-  console.log(window.width, "from Get windim", window.height);
-
-  const Time = () => {
-    let today = new Date();
-    let hours = today.getHours();
-    let minutes = today.getMinutes();
-    const ampm = hours >= 12 ? "PM" : "AM";
-    hours = hours % 12;
-    hours = hours ? hours : 12;
-    minutes = minutes < 10 ? "0" + minutes : minutes;
-    let currTime = hours + ":" + minutes + " " + ampm;
-    console.log(currTime, "from current time");
-    return hours + ":" + minutes + " " + ampm;
-  };
+  const timerFunc = Time();
 
   useEffect(() => {
     let imgUrl = "https://picsum.photos/" + window.width + "/" + window.height;
     setImgUrl(imgUrl);
     let secTimer = setInterval(() => {
-      setTime(Time);
+      setTime(timerFunc);
     }, 1000);
 
     return () => clearInterval(secTimer);
-  }, [window.height, window.width]);
+  }, [window.height, window.width, timerFunc]);
 
   return (
     <div
@@ -39,6 +27,7 @@ function App() {
       }}
     >
       <p className="time">{time}</p>
+      <p>What do you want to accomplish today ?</p>
     </div>
   );
 }
