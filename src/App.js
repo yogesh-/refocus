@@ -1,23 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React, { useEffect, useState } from "react";
+import { GetWindowDims } from "./getDims";
 
 function App() {
+  const [finalUrl, setImgUrl] = useState();
+  const [time, setTime] = useState();
+  const window = GetWindowDims();
+  console.log(window.width, "from Get windim", window.height);
+
+  const Time = () => {
+    let today = new Date();
+    let hours = today.getHours();
+    let minutes = today.getMinutes();
+    const ampm = hours >= 12 ? "PM" : "AM";
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    let currTime = hours + ":" + minutes + " " + ampm;
+    console.log(currTime, "from current time");
+    setTime(currTime);
+    return hours + ":" + minutes + " " + ampm;
+  };
+
+  useEffect(() => {
+    let imgUrl = "https://picsum.photos/" + window.width + "/" + window.height;
+    setImgUrl(imgUrl);
+    Time();
+  }, [window.height, window.width]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div
+      className="App"
+      style={{
+        backgroundImage: `url(${finalUrl})`,
+      }}
+    >
+      <p className="time">{time}</p>
     </div>
   );
 }
