@@ -4,7 +4,7 @@ import { GetWindowDims } from "./getDims";
 
 function App() {
   const [finalUrl, setImgUrl] = useState();
-  const [time, setTime] = useState();
+  const [time, setTime] = useState(new Date().toLocaleString());
   const window = GetWindowDims();
   console.log(window.width, "from Get windim", window.height);
 
@@ -18,15 +18,19 @@ function App() {
     minutes = minutes < 10 ? "0" + minutes : minutes;
     let currTime = hours + ":" + minutes + " " + ampm;
     console.log(currTime, "from current time");
-    setTime(currTime);
     return hours + ":" + minutes + " " + ampm;
   };
 
   useEffect(() => {
     let imgUrl = "https://picsum.photos/" + window.width + "/" + window.height;
     setImgUrl(imgUrl);
-    Time();
+    let secTimer = setInterval(() => {
+      setTime(Time);
+    }, 1000);
+
+    return () => clearInterval(secTimer);
   }, [window.height, window.width]);
+
   return (
     <div
       className="App"
