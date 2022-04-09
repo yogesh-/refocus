@@ -2,6 +2,7 @@ import "./App.css";
 import React, { useEffect, useState } from "react";
 import { GetWindowDims } from "./utilities/getDims";
 import { Weather } from "./utilities/weather";
+import { Greet } from "./utilities/greet";
 
 function App() {
   const [mycity, setMyCity] = useState("");
@@ -31,7 +32,9 @@ function App() {
       const response = await fetch(URL);
       const { statusCode, statusMessage, ...data } = await response.json();
       if (!response.ok)
-        throw new Error(`some message ${statusCode} ${statusMessage}`);
+        throw new Error(
+          `Error message from server ${statusCode} ${statusMessage}`
+        );
       setWeatherIcon(
         `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
       );
@@ -41,11 +44,16 @@ function App() {
       console.log(mycity, temp, "from API call", icon, imgAlt);
     })();
 
+    // image
+
     let imgUrl = "https://picsum.photos/" + window.width + "/" + window.height;
     setImgUrl(imgUrl);
+
+    //time
     let secTimer = setInterval(() => {
       setTime(new Date().toLocaleTimeString([], { timeStyle: "short" }));
     }, 1000);
+    console.log("this is the time object", time);
     return () => clearInterval(secTimer);
   }, [
     window.width,
@@ -56,6 +64,7 @@ function App() {
     temp,
     imgAlt,
     icon,
+    time,
   ]);
 
   return (
@@ -66,8 +75,12 @@ function App() {
       }}
     >
       <p className="time">{time}</p>
-      <p>{temp}</p>
-      <p>{mycity}</p>
+      <p>
+        {mycity}
+        {"  "}
+        {temp}
+      </p>
+      <Greet />
     </div>
   );
 }
