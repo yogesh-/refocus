@@ -22,7 +22,6 @@ const Weather = () => {
     getCoordinates();
   }, [lati, longi]);
 
-  console.log("latitude is:", lati, "longitude is:", longi);
   return { latitude: lati, longitude: longi };
 };
 

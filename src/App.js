@@ -1,8 +1,10 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
-import { GetWindowDims } from "./utilities/getDims";
-import { Weather } from "./utilities/weather";
-import { Greet } from "./utilities/greet";
+import { GetWindowDims } from "./components/getDims";
+import { Weather } from "./components/weather";
+import { Greet } from "./components/greet";
+import { GetQuotes } from "./components/getQuotes";
+import { UserOnboard } from "./components/onboarding";
 
 function App() {
   const [mycity, setMyCity] = useState("");
@@ -13,6 +15,7 @@ function App() {
   const [time, setTime] = useState();
   const window = GetWindowDims();
   const weatherNow = Weather();
+  const username = localStorage.getItem("username");
 
   useEffect(() => {
     let lat = weatherNow.latitude;
@@ -26,7 +29,6 @@ function App() {
       long +
       "&appid=" +
       api_key;
-    console.log("weather URL---------->", URL);
 
     (async () => {
       const response = await fetch(URL);
@@ -41,7 +43,6 @@ function App() {
       setImgAlt(data.weather[0].description);
       setTemperature(Math.round(data.main.temp - 273) + "°C");
       setMyCity(data.name);
-      console.log(mycity, temp, "from API call", icon, imgAlt);
     })();
 
     // image
@@ -53,7 +54,6 @@ function App() {
     let secTimer = setInterval(() => {
       setTime(new Date().toLocaleTimeString([], { timeStyle: "short" }));
     }, 1000);
-    console.log("this is the time object", time);
     return () => clearInterval(secTimer);
   }, [
     window.width,
@@ -74,13 +74,23 @@ function App() {
         backgroundImage: `url(${finalUrl})`,
       }}
     >
-      <p className="time">{time}</p>
-      <p>
-        {mycity}
-        {"  "}
-        {temp}
-      </p>
-      <Greet />
+      {username === null ? (
+        <main>
+          <UserOnboard />
+          <GetQuotes />
+        </main>
+      ) : (
+        <main>
+          <p className="time">{time}</p>
+          <p>
+            {mycity}
+            {"  "}
+            {temp}
+          </p>
+          <Greet />
+          <GetQuotes />
+        </main>
+      )}
     </div>
   );
 }

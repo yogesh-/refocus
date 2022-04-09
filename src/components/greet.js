@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 export const Greet = () => {
+  const username = localStorage.getItem("username");
   const [greet, setGreet] = useState("");
   useEffect(() => {
     var time = new Date();
@@ -8,18 +9,20 @@ export const Greet = () => {
       hour: "numeric",
       hour12: false,
     });
-    console.log(windowTime);
-
     if (windowTime < 12) {
       setGreet("Good Morning");
-    } else if (12 < windowTime < 17) {
+    } else if (17 > windowTime > 12) {
       setGreet("Good Afternoon");
-    } else if (17 < windowTime < 23) {
+    } else if (windowTime > 17 && windowTime < 23) {
       setGreet("Good Evening");
     } else {
       setGreet("Hello Night Owl");
     }
   }, []);
 
-  return <h1>{greet}</h1>;
+  return (
+    <h1>
+      {greet},{username}
+    </h1>
+  );
 };

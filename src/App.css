@@ -14,3 +14,25 @@
   font-weight: 900;
   margin: 0;
 }
+
+.show-quote-and-author {
+  display: none;
+}
+.showquote:hover .show-quote-and-author {
+  display: block;
+}
+.showquote:hover .quote {
+  display: none;
+}
+
+.proceed-button {
+  display: block;
+  align-items: center;
+}
+
+.onboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
