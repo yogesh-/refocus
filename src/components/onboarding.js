@@ -8,7 +8,6 @@ export const UserOnboard = () => {
       localStorage.setItem("username", name);
     }
   };
-  console.log("name", name);
   return (
     <div className="onboard">
       <h1>What is your name ?</h1>
