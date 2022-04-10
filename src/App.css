@@ -47,3 +47,8 @@
   border-color: whitesmoke;
   background-color: transparent;
 }
+
+#cbox:checked + label {
+  color: whitesmoke;
+  text-decoration: line-through;
+}
