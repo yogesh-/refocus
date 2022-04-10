@@ -12,6 +12,7 @@ export const UserOnboard = () => {
     <div className="onboard">
       <h1>What is your name ?</h1>
       <input
+        className="user-focus-input"
         type="text"
         placeholder="John Doe"
         onChange={(e) => {

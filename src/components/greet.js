@@ -9,9 +9,9 @@ export const Greet = () => {
       hour: "numeric",
       hour12: false,
     });
-    if (windowTime < 12) {
+    if (windowTime < 12 && windowTime > 6) {
       setGreet("Good Morning");
-    } else if (17 > windowTime > 12) {
+    } else if (windowTime > 12 && windowTime < 17) {
       setGreet("Good Afternoon");
     } else if (windowTime > 17 && windowTime < 23) {
       setGreet("Good Evening");
@@ -21,7 +21,7 @@ export const Greet = () => {
   }, []);
 
   return (
-    <h1>
+    <h1 className="font-color-default">
       {greet},{username}
     </h1>
   );
