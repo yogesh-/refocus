@@ -3,16 +3,16 @@ import "../App.css";
 
 export const GetQuotes = () => {
   const randomNumber = Math.floor(Math.random() * 300);
-  const getquote = quotes[randomNumber].text;
-  const get_quote_author = quotes[randomNumber].author;
+  var author = quotes[randomNumber].author;
+  var quote = quotes[randomNumber].text;
 
   return (
-    <div className="showquote">
-      <div className="show-quote-and-author">
-        <p>{getquote}</p>
-        By {get_quote_author}
+    <div className="showquote font-color-default">
+      <div className="show-quote-and-author font-color-default">
+        <p>{quote}</p>
+        By {author}
       </div>
-      <div className="quote">{getquote}</div>
+      <div className="quote font-color-default">{quote}</div>
     </div>
   );
 };

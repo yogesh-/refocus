@@ -5,6 +5,8 @@ import { Weather } from "./components/weather";
 import { Greet } from "./components/greet";
 import { GetQuotes } from "./components/getQuotes";
 import { UserOnboard } from "./components/onboarding";
+import { UserFocus } from "./components/userfocus";
+import { imageIds } from "./data/imageIds";
 
 function App() {
   const [mycity, setMyCity] = useState("");
@@ -47,7 +49,14 @@ function App() {
 
     // image
 
-    let imgUrl = "https://picsum.photos/" + window.width + "/" + window.height;
+    const randomNumber = Math.floor(Math.random() * 50) + 1;
+    let imgUrl =
+      "https://picsum.photos/id/" +
+      imageIds[randomNumber] +
+      "/" +
+      window.width +
+      "/" +
+      window.height;
     setImgUrl(imgUrl);
 
     //time
@@ -82,13 +91,14 @@ function App() {
       ) : (
         <main>
           <p className="time">{time}</p>
-          <p>
+          <p className="font-color-default">
             {mycity}
             {"  "}
             {temp}
           </p>
           <Greet />
           <GetQuotes />
+          <UserFocus />
         </main>
       )}
     </div>

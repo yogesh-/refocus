@@ -15,6 +15,10 @@
   margin: 0;
 }
 
+.font-color-default {
+  color: whitesmoke;
+}
+
 .show-quote-and-author {
   display: none;
 }
@@ -35,4 +39,16 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.user-focus-input {
+  outline: 0;
+  border-width: 0 0 0.2rem;
+  border-color: whitesmoke;
+  background-color: transparent;
+}
+
+#cbox:checked + label {
+  color: whitesmoke;
+  text-decoration: line-through;
 }
