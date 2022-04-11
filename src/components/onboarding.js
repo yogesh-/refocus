@@ -10,7 +10,7 @@ export const UserOnboard = () => {
   };
   return (
     <div className="onboard">
-      <h1>What is your name ?</h1>
+      <h1 className="font-color-default">What is your name ?</h1>
       <input
         className="user-focus-input"
         type="text"

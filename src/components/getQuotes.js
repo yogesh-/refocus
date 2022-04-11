@@ -7,7 +7,7 @@ export const GetQuotes = () => {
   var quote = quotes[randomNumber].text;
 
   return (
-    <div className="showquote font-color-default">
+    <div className="showquote font-color-default quote-padding">
       <div className="show-quote-and-author font-color-default">
         <p>{quote}</p>
         By {author}

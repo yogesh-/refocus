@@ -15,6 +15,9 @@
   margin: 0;
 }
 
+.quote-padding {
+  margin-top: 4.5rem;
+}
 .font-color-default {
   color: whitesmoke;
 }
@@ -46,9 +49,96 @@
   border-width: 0 0 0.2rem;
   border-color: whitesmoke;
   background-color: transparent;
+  color: whitesmoke;
+  font-size: 2rem;
 }
 
 #cbox:checked + label {
-  color: whitesmoke;
+  color: rgb(240, 119, 119);
   text-decoration: line-through;
+}
+
+.notes-bg {
+  background-color: snow;
+  overflow-y: hidden;
+
+  width: 15rem;
+  list-style: none;
+  border-radius: 5px;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* .col {
+  flex-direction: column;
+}
+
+.row {
+  flex-direction: row;
+} */
+
+.no-margin {
+  margin: 0;
+}
+.box {
+  display: flex;
+  flex-flow: column wrap;
+  width: 250px;
+  height: 100px;
+}
+
+.row {
+  width: 45%;
+  height: 100%;
+}
+
+.col {
+  width: 55%;
+  height: 50%;
+}
+/* Grid layout */
+
+#page {
+  display: grid;
+  width: 100%;
+  height: 100vh;
+  grid-template-areas:
+    "weather weather weather"
+    "space time note";
+  grid-template-columns: 20% 60% 20%;
+  grid-template-rows: 30% 70%;
+  /* grid-gap: 1em; */
+}
+
+#page weather {
+  /* background-color: royalblue; */
+  grid-area: weather;
+  /* height: 5rem; */
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  /* padding-right: 5rem; */
+  /* padding-top: 2rem; */
+  /* width: 30rem; */
+}
+
+#page space {
+  /* background-color: sienna; */
+  grid-area: space;
+}
+
+#page time {
+  /* background-color: seagreen; */
+  grid-area: time;
+  /* display: flex;
+  flex-direction: column; */
+}
+
+#page note {
+  /* background-color: aqua; */
+  grid-area: note;
 }

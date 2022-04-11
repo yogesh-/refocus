@@ -6,6 +6,7 @@ import { Greet } from "./components/greet";
 import { GetQuotes } from "./components/getQuotes";
 import { UserOnboard } from "./components/onboarding";
 import { UserFocus } from "./components/userfocus";
+import Note from "./components/notes";
 import { imageIds } from "./data/imageIds";
 
 function App() {
@@ -89,16 +90,31 @@ function App() {
           <GetQuotes />
         </main>
       ) : (
-        <main>
-          <p className="time">{time}</p>
-          <p className="font-color-default">
-            {mycity}
-            {"  "}
-            {temp}
-          </p>
-          <Greet />
-          <GetQuotes />
-          <UserFocus />
+        <main id="page">
+          <weather>
+            <div className="box">
+              <p className=" col no-margin">
+                <img src={icon} alt="icon"></img>
+              </p>
+              <span className="row font-color-default center">
+                <div>
+                  <p className="no-margin">{mycity}</p>
+                  <p className="no-margin">{temp}</p>
+                </div>
+              </span>
+            </div>
+          </weather>
+          <space></space>
+          <time>
+            <p className="time">{time}</p>
+            <Greet />
+
+            <UserFocus />
+            <GetQuotes />
+          </time>
+          <note>
+            <Note />
+          </note>
         </main>
       )}
     </div>
