@@ -73,14 +73,6 @@
   justify-content: center;
 }
 
-/* .col {
-  flex-direction: column;
-}
-
-.row {
-  flex-direction: row;
-} */
-
 .no-margin {
   margin: 0;
 }
@@ -111,34 +103,23 @@
     "space time note";
   grid-template-columns: 20% 60% 20%;
   grid-template-rows: 30% 70%;
-  /* grid-gap: 1em; */
 }
 
 #page weather {
-  /* background-color: royalblue; */
   grid-area: weather;
-  /* height: 5rem; */
   display: flex;
   flex-direction: row;
   justify-content: end;
-  /* padding-right: 5rem; */
-  /* padding-top: 2rem; */
-  /* width: 30rem; */
 }
 
 #page space {
-  /* background-color: sienna; */
   grid-area: space;
 }
 
 #page time {
-  /* background-color: seagreen; */
   grid-area: time;
-  /* display: flex;
-  flex-direction: column; */
 }
 
 #page note {
-  /* background-color: aqua; */
   grid-area: note;
 }
