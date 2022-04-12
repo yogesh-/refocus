@@ -10,11 +10,9 @@ export const UserFocus = () => {
     if (e.key === "Enter") {
       localStorage.setItem("user-focus", input);
       window.location.reload();
-      console.log("saveInput event is getting fired");
     }
   };
   const userfocus = localStorage.getItem("user-focus");
-  console.log("from userfocus", userfocus);
 
   const handleChecked = (e) => {
     const randomNumber = Math.floor(Math.random() * 5);
