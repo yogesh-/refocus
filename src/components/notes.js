@@ -2,14 +2,14 @@ import "../App.css";
 import { useState } from "react";
 
 const Note = () => {
-  const [show, setShow] = useState(false);
+  const [display, setdisplay] = useState(false);
   const [note, setNote] = useState();
   const [notesArray, setnotesArray] = useState([]);
   const clickHandler = (e) => {
-    if (show !== true) {
-      setShow(true);
+    if (display !== true) {
+      setdisplay(true);
     } else {
-      setShow(false);
+      setdisplay(false);
     }
   };
 
@@ -22,11 +22,11 @@ const Note = () => {
     <>
       {" "}
       <button onClick={(e) => clickHandler(e)}>ToDo</button>
-      {show ? (
+      {display ? (
         <div className="notes-bg">
           <p>My Todo's</p>
-          {notesArray.map((item) => (
-            <li>
+          {notesArray.map((item, index) => (
+            <li key={index}>
               <input type="checkbox" id="cbox" />
               <label for="cbox">{item}</label>
             </li>

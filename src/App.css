@@ -54,7 +54,7 @@
 }
 
 #cbox:checked + label {
-  color: rgb(240, 119, 119);
+  color: royalblue;
   text-decoration: line-through;
 }
 
