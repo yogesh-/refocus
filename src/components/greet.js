@@ -9,11 +9,12 @@ export const Greet = () => {
       hour: "numeric",
       hour12: false,
     });
+    console.log(windowTime, "window time fetched from api");
     if (windowTime < 12 && windowTime > 6) {
       setGreet("Good Morning");
-    } else if (windowTime > 12 && windowTime < 17) {
+    } else if (windowTime >= 12 && windowTime < 17) {
       setGreet("Good Afternoon");
-    } else if (windowTime > 17 && windowTime < 23) {
+    } else if (windowTime >= 17 && windowTime < 23) {
       setGreet("Good Evening");
     } else {
       setGreet("Hello Night Owl");

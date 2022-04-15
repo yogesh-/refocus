@@ -2,7 +2,7 @@ import { quotes } from "../data/quotesDB";
 import "../App.css";
 
 export const GetQuotes = () => {
-  const randomNumber = Math.floor(Math.random() * 300);
+  const randomNumber = Math.floor(Math.random() * 100);
   var author = quotes[randomNumber].author;
   var quote = quotes[randomNumber].text;
 
