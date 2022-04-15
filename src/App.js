@@ -91,7 +91,7 @@ function App() {
         </main>
       ) : (
         <main id="page">
-          <weather>
+          <weather is="x3d">
             <div className="box">
               <p className=" col no-margin">
                 <img src={icon} alt="icon"></img>
@@ -104,15 +104,15 @@ function App() {
               </span>
             </div>
           </weather>
-          <space></space>
-          <time>
+          <space is="x3d"></space>
+          <time is="x3d">
             <p className="time">{time}</p>
             <Greet />
 
             <UserFocus />
             <GetQuotes />
           </time>
-          <note>
+          <note is="x3d">
             <Note />
           </note>
         </main>

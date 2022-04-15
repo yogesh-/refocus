@@ -45,7 +45,7 @@ export const UserFocus = () => {
       ) : (
         <>
           <input type="checkbox" id="cbox" onChange={(e) => handleChecked(e)} />
-          <label for="cbox" className="font-color-default">
+          <label htmlFor="cbox" className="font-color-default">
             {userfocus}
           </label>
           <p className="font-color-default">{wish}</p>
