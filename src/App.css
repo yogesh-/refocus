@@ -35,6 +35,9 @@
 .proceed-button {
   display: block;
   align-items: center;
+  margin-top: 2rem;
+  font-size: larger;
+  border-radius: 0.5rem;
 }
 
 .onboard {
@@ -122,4 +125,9 @@
 
 #page note {
   grid-area: note;
+}
+
+.todo-btn {
+  position: relative;
+  top: 80%;
 }

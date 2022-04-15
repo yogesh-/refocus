@@ -21,7 +21,9 @@ const Note = () => {
   return (
     <>
       {" "}
-      <button onClick={(e) => clickHandler(e)}>ToDo</button>
+      <button className="todo-btn" onClick={(e) => clickHandler(e)}>
+        ToDo
+      </button>
       {display ? (
         <div className="notes-bg">
           <p>My Todo's</p>

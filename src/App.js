@@ -93,9 +93,6 @@ function App() {
         <main id="page">
           <weather is="x3d">
             <div className="box">
-              <p className=" col no-margin">
-                <img src={icon} alt="icon"></img>
-              </p>
               <span className="row font-color-default center">
                 <div>
                   <p className="no-margin">{mycity}</p>
