@@ -16,6 +16,7 @@ function App() {
   const [imgAlt, setImgAlt] = useState("weather icon");
   const [finalUrl, setImgUrl] = useState();
   const [time, setTime] = useState();
+  const [loading, setLoading] = useState("");
   const window = GetWindowDims();
   const weatherNow = Weather();
   const username = localStorage.getItem("username");
@@ -38,8 +39,13 @@ function App() {
       const { statusCode, statusMessage, ...data } = await response.json();
       if (!response.ok)
         throw new Error(
-          `Error message from server ${statusCode} ${statusMessage}`
+          `Error message from server ${statusCode} ${statusMessage}`,
+          setLoading(true)
         );
+      else {
+        setLoading(false);
+      }
+
       setWeatherIcon(
         `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
       );
@@ -94,10 +100,14 @@ function App() {
           <weather is="x3d">
             <div className="box">
               <span className="row font-color-default center">
-                <div>
-                  <p className="no-margin">{mycity}</p>
-                  <p className="no-margin">{temp}</p>
-                </div>
+                {loading ? (
+                  <p>Loading...</p>
+                ) : (
+                  <div>
+                    <p className="no-margin">{mycity}</p>
+                    <p className="no-margin">{temp}</p>
+                  </div>
+                )}
               </span>
             </div>
           </weather>

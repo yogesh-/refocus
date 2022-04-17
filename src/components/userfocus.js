@@ -9,7 +9,7 @@ export const UserFocus = () => {
   const saveInput = (e) => {
     if (e.key === "Enter") {
       localStorage.setItem("user-focus", input);
-      window.location.reload();
+      // window.location.reload();
     }
   };
   const userfocus = localStorage.getItem("user-focus");
@@ -17,7 +17,6 @@ export const UserFocus = () => {
   const handleChecked = (e) => {
     const randomNumber = Math.floor(Math.random() * 5);
     const wishQuote = wishdb[randomNumber];
-    console.log(wishQuote);
 
     const abc = e.target.checked;
     console.log(abc);
