@@ -40,6 +40,7 @@ export const UserFocus = () => {
             onChange={(e) => setInput(e.target.value)}
             onKeyUp={(e) => saveInput(e)}
           ></input>
+          <button>Submit</button>
         </>
       ) : (
         <>
