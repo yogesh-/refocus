@@ -6,12 +6,6 @@ export const UserFocus = () => {
   const [input, setInput] = useState("");
   const [wish, setWish] = useState("");
 
-  const saveInput = (e) => {
-    if (e.key === "Enter") {
-      localStorage.setItem("user-focus", input);
-      // window.location.reload();
-    }
-  };
   const userfocus = localStorage.getItem("user-focus");
 
   const handleChecked = (e) => {
@@ -27,6 +21,13 @@ export const UserFocus = () => {
     }
   };
 
+  const handleClick = () => {
+    if (input !== "") {
+      localStorage.setItem("user-focus", input);
+    } else {
+      console.log("null value in input");
+    }
+  };
   return (
     <>
       {userfocus === null ? (
@@ -34,13 +35,13 @@ export const UserFocus = () => {
           <h1 className="font-color-default">
             What is your main focus for today ?{" "}
           </h1>
+
           <input
             className="user-focus-input"
             type="text"
             onChange={(e) => setInput(e.target.value)}
-            onKeyUp={(e) => saveInput(e)}
           ></input>
-          <button>Submit</button>
+          <button onClick={handleClick}>Submit</button>
         </>
       ) : (
         <>
