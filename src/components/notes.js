@@ -15,7 +15,11 @@ const Note = () => {
 
   const noteAdd = (e) => {
     setNote("");
-    setnotesArray([...notesArray, note]);
+    if (note === "") {
+      setnotesArray([...notesArray]);
+    } else {
+      setnotesArray([...notesArray, note]);
+    }
   };
 
   return (
@@ -36,6 +40,7 @@ const Note = () => {
 
           <input
             type="text"
+            placeholder="Enter your to-do item"
             value={note}
             onChange={(e) => setNote(e.target.value)}
           ></input>

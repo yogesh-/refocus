@@ -5,6 +5,7 @@ import { wishdb } from "../data/wishDb";
 export const UserFocus = () => {
   const [input, setInput] = useState("");
   const [wish, setWish] = useState("");
+  const [task, setTask] = useState(false);
 
   const userfocus = localStorage.getItem("user-focus");
 
@@ -27,29 +28,41 @@ export const UserFocus = () => {
     } else {
       console.log("null value in input");
     }
+    setTask(true);
   };
   return (
     <>
-      {userfocus === null ? (
+      {task === false ? (
         <>
           <h1 className="font-color-default">
             What is your main focus for today ?{" "}
           </h1>
-
-          <input
-            className="user-focus-input"
-            type="text"
-            onChange={(e) => setInput(e.target.value)}
-          ></input>
-          <button onClick={handleClick}>Submit</button>
+          <div>
+            <input
+              className="user-focus-input"
+              type="text"
+              onChange={(e) => setInput(e.target.value)}
+            ></input>
+            <button
+              className="proceed-button btn-userfocus"
+              onClick={handleClick}
+            >
+              Submit
+            </button>
+          </div>
         </>
       ) : (
         <>
-          <input type="checkbox" id="cbox" onChange={(e) => handleChecked(e)} />
-          <label htmlFor="cbox" className="font-color-default">
+          <input
+            className="task"
+            type="checkbox"
+            id="cbox"
+            onChange={(e) => handleChecked(e)}
+          />
+          <label htmlFor="cbox" className="font-color-default task">
             {userfocus}
           </label>
-          <p className="font-color-default">{wish}</p>
+          <p className="font-color-default task wish-margin">{wish}</p>
         </>
       )}
     </>
