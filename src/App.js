@@ -17,15 +17,12 @@ function App() {
   const [finalUrl, setImgUrl] = useState();
   const [time, setTime] = useState();
   const [loading, setLoading] = useState("");
-  // const [next, setNext] = useState(false);
+
   const window = GetWindowDims();
   const weatherNow = Weather();
   const username = localStorage.getItem("username");
 
   useEffect(() => {
-    // if (username !== null) {
-    //   setNext(true);
-    // }
     let lat = weatherNow.latitude;
     let long = weatherNow.longitude;
     let api_key = "2fb7d0da584a3542e607fbb629f81fea";
