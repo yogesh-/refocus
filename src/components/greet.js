@@ -9,7 +9,7 @@ export const Greet = () => {
       hour: "numeric",
       hour12: false,
     });
-    console.log(windowTime, "window time fetched from api");
+
     if (windowTime < 12 && windowTime > 6) {
       setGreet("Good Morning");
     } else if (windowTime >= 12 && windowTime < 17) {

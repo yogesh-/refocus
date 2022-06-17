@@ -12,6 +12,7 @@ const Weather = () => {
         longitude = Math.trunc(position.coords.longitude);
         setLatitude(latitude);
         setLongitude(longitude);
+        console.log(latitude, longitude);
       });
     } else {
       return "Geolocation is not supported by this browser.";

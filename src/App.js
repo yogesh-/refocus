@@ -11,17 +11,21 @@ import { imageIds } from "./data/imageIds";
 
 function App() {
   const [mycity, setMyCity] = useState("");
-  const [icon, setWeatherIcon] = useState("");
+
   const [temp, setTemperature] = useState("");
-  const [imgAlt, setImgAlt] = useState("weather icon");
+
   const [finalUrl, setImgUrl] = useState();
   const [time, setTime] = useState();
   const [loading, setLoading] = useState("");
+  // const [next, setNext] = useState(false);
   const window = GetWindowDims();
   const weatherNow = Weather();
   const username = localStorage.getItem("username");
 
   useEffect(() => {
+    // if (username !== null) {
+    //   setNext(true);
+    // }
     let lat = weatherNow.latitude;
     let long = weatherNow.longitude;
     let api_key = "2fb7d0da584a3542e607fbb629f81fea";
@@ -46,10 +50,6 @@ function App() {
         setLoading(false);
       }
 
-      setWeatherIcon(
-        `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
-      );
-      setImgAlt(data.weather[0].description);
       setTemperature(Math.round(data.main.temp - 273) + "°C");
       setMyCity(data.name);
     })();
@@ -78,9 +78,7 @@ function App() {
     weatherNow.longitude,
     mycity,
     temp,
-    imgAlt,
-    icon,
-    time,
+    username,
   ]);
 
   return (
